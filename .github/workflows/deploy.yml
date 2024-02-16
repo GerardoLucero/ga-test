@@ -1,0 +1,52 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main  
+  workflow_dispatch:  
+jobs: 
+  preconditions:
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v4
+       - name: Install Nodejs
+         uses: actions/setup-node@v3
+         with: 
+           node-version: 18
+       - name: Dependencias
+         run: npm ci
+       - name: Test
+         run: npm lint
+  test:
+    needs: preconditions
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v4
+       - name: Install Nodejs
+         uses: actions/setup-node@v3
+         with: 
+           node-version: 18
+       - name: Dependencias
+         run: npm ci
+       - name: Test
+         run: npm test
+       - name: Build
+         run: npm build
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v4
+       - name: Install Nodejs
+         uses: actions/setup-node@v3
+         with: 
+           node-version: 18
+       - name: Deploy
+         run: echo "Deploying..."
+       - name: Deploy Donde
+         run: echo "Deployed"
+      
+      
