@@ -19,7 +19,10 @@ jobs:
            npm ci
            npm init @eslint/config
        - name: Test
-         run: npm run lint
+         run: |
+           npm init @eslint/config
+           npm run lint
+
   test:
     needs: preconditions
     runs-on: ubuntu-latest
