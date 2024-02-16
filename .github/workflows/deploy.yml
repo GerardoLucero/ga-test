@@ -15,7 +15,7 @@ jobs:
          with: 
            node-version: 18
        - name: Dependencias
-         run: npm ci
+         run: npm i
        - name: Test
          run: npm run lint
 
@@ -30,7 +30,7 @@ jobs:
          with: 
            node-version: 18
        - name: Dependencias
-         run: npm ci
+         run: npm i
        - name: Test
          run: npm run test
        - name: Build
