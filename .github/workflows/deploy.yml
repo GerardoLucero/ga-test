@@ -15,13 +15,9 @@ jobs:
          with: 
            node-version: 18
        - name: Dependencias
-         run: |
-           npm ci
-           npm init @eslint/config
+         run: npm ci
        - name: Test
-         run: |
-           npm init @eslint/config
-           npm run lint
+         run: npm run lint
 
   test:
     needs: preconditions
